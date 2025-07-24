@@ -1,0 +1,54 @@
+<<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %> | Daily Quote Journal</title>
+  <link rel="stylesheet" href="/main.css">
+  <script src="/menu.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Daily Quote Journal</h1>
+      <nav id="navigation-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="#">Menu &#9660;</a>
+            <ul class="dropdown-content">
+              <li><a href="/newQuote">Add Quote</a></li>
+              <li><a href="/search">Search</a></li>
+              <li><a href="/about">About</a></li>
+              <% if (!user) { %>
+                <li><a href="/register">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+              <% } else { %>
+                <li><a href="/logout">Logout</a></li>
+              <% } %>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+      <main>
+        <section class="about-section">
+          <h2>Welcome to Daily Quote Journal</h2>
+          <p>Daily Quote Journal is your personal space for collecting, reflecting on, and sharing your favorite quotes. Whether you need daily inspiration or a place to remember the words that moved you, this app is designed to make it easy and enjoyable.</p>
+
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Quote Collection:</strong> Save your favorite quotes in one place.</li>
+            <li><strong>Daily Inspiration:</strong> Receive a new quote every day to inspire and motivate you.</li>
+            <li><strong>Personalized Journal:</strong> Add notes and reflections to each quote to capture your thoughts and emotions.</li>
+          </ul>
+
+          <h3>Our Mission</h3>
+          <p>We aim to inspire and uplift through the power of words, helping you keep track of the quotes that matter most in your life.</p>
+
+          <h3>Contact Us</h3>
+          <p>If you have any questions or feedback, feel free to contact us at <a href="mailto:support@dailyquotejournal.com">support@dailyquotejournal.com</a>.</p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

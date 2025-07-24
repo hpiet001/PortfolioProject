@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add a Quote</title>
+  <link rel="stylesheet" href="/main.css">
+  <script src="/menu.js" defer></script>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Add a New Quote</h1>
+      <nav id="navigation-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="#">Menu &#9660;</a>
+            <ul class="dropdown-content">
+              <li><a href="/newQuote">Add Quote</a></li>
+              <li><a href="/search">Search Quotes</a></li>
+              <li><a href="/register">Sign Up</a></li>
+              <li><a href="/login">Login</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Submit a Quote</h2>
+        <form method="POST" action="/newQuote">
+          <label for="text">Quote:</label><br>
+          <textarea name="text" required></textarea><br><br>
+
+          <label for="author">Author:</label><br>
+          <input type="text" name="author"><br><br>
+
+          <label for="quote_date">Date:</label><br>
+          <input type="date" name="quote_date" required><br><br>
+
+          <button type="submit">Add Quote</button>
+        </form>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

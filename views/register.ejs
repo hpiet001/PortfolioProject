@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Register for Daily Quote Journal</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script src="/menu.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Register for Daily Quote Journal</h1>
+        <nav id="navigation-menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="#">More &#9660;</a>
+              <ul class="dropdown-content">
+                <li><a href="/newQuote">Add New Quote</a></li>
+                <li><a href="/quotes">View Quotes</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/register">Sign up</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <h1>Create an Account</h1>
+        <form action="/register" method="POST">
+          <p>Username: <input id="username" name="username" type="text" required /></p>
+          <p>Password: <input id="password" name="password" type="password" required /></p>
+          <p>Email: <input id="email" name="email" type="email" required /></p>
+          <input type="submit" value="Register" />
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
+

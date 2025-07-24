@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Your Journal - Daily Quote Journal</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script src="/menu.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Your Journal</h1>
+        <nav id="navigation-menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="#">More &#9660;</a>
+              <ul class="dropdown-content">
+                <li><a href="/newQuote">Add New Quote</a></li>
+                <li><a href="/quotes">View Quotes</a></li>
+                <li><a href="/journal">Your Journal</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/register">Sign up</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="journal-section">
+          <h2>Your Journal Entries</h2>
+          
+          <% if (journalEntries.length > 0) { %>
+            <ul class="journal-list">
+              <% journalEntries.forEach(function(entry) { %>
+                <li>
+                  <h3><%= entry.quote %></h3>
+                  <p><strong>Reflection:</strong> <%= entry.reflection %></p>
+                  <p><small>Added on: <%= entry.date %></small></p>
+                </li>
+              <% }); %>
+            </ul>
+          <% } else { %>
+            <p>You have no journal entries yet. Start by adding a new quote!</p>
+          <% } %>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

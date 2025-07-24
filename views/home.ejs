@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Welcome to Daily Quote Journal</title>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <script src="/menu.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Welcome to Daily Quote Journal</h1>
+        <nav id="navigation-menu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Menu &#9660;</a>
+              <ul class="dropdown-content">
+                <li><a href="/newQuote">Add Quote</a></li>
+                <li><a href="/search">Search Quotes</a></li>
+                <li><a href="/register">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
+              </ul>              
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section class="quote-section">
+          <h1>Today's Quotes</h1>
+          <ul>
+            <% quotes.forEach(function(quote) { %>
+              <li>
+                "<%= quote.content %>" - <%= quote.author %>
+              </li>
+            <% }); %>
+          </ul>
+        </section>
+        <% if (user) { %>
+          <h2>Write Your Journal Entry</h2>
+          <form action="/journal" method="POST">
+            <textarea name="entry_text" rows="5" cols="50" placeholder="Write your thoughts..."></textarea><br><br>
+            <label for="mood">Mood:</label>
+            <input type="text" name="mood" placeholder="e.g., Inspired, Calm"><br><br>
+            <label for="tags">Tags:</label>
+            <input type="text" name="tags" placeholder="e.g., motivation, gratitude"><br><br>
+            <button type="submit">Save Entry</button>
+          </form>
+          <% if (entries && entries.length > 0) { %>
+            <section class="past-entries">
+              <h2>Your Journal History</h2>
+              <ul>
+                <% entries.forEach(entry => { %>
+                  <li>
+                    <strong><%= new Date(entry.date_created).toLocaleString() %></strong><br>
+                    Quote: "<%= entry.quote_text %>" - <%= entry.quote_author %><br>
+                    Mood: <%= entry.mood %><br>
+                    Tags: <%= entry.tags %><br>
+                    Entry: <%= entry.entry_text %>
+                  </li>
+                  <hr>
+                <% }); %>
+              </ul>
+            </section>
+          <% } else if (user) { %>
+            <p>You haven't written any journal entries yet.</p>
+          <% } %>          
+        <% } else { %>
+          <p><a href="/login">Log in</a> to write your journal entry.</p>
+        <% } %>        
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS daily_quote_journal;
+USE daily_quote_journal;
+
+-- Users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Quotes table
+CREATE TABLE Quote (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    text TEXT NOT NULL,
+    author VARCHAR(255),
+    quote_date DATE NOT NULL UNIQUE
+);
+
+-- Journal entries table
+CREATE TABLE JournalEntry (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    quote_id INT NOT NULL,
+    entry_text TEXT,
+    mood VARCHAR(50),
+    tags VARCHAR(255),
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (quote_id) REFERENCES Quote(id) ON DELETE CASCADE
+);

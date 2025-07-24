@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Journal Entries</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Search Your Journal</h1>
+
+    <form method="GET" action="/search">
+      <input type="text" name="q" placeholder="Search by keyword, mood or tag" required>
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (results && results.length > 0) { %>
+      <h2>Results:</h2>
+      <ul>
+        <% results.forEach(entry => { %>
+          <li>
+            <strong><%= new Date(entry.date_created).toLocaleString() %></strong><br>
+            Mood: <%= entry.mood %><br>
+            Tags: <%= entry.tags %><br>
+            Entry: <%= entry.entry_text %><br>
+            Quote: "<%= entry.quote_text %>" - <%= entry.quote_author %>
+          </li>
+          <hr>
+        <% }) %>
+      </ul>
+    <% } else if (results) { %>
+      <p>No results found.</p>
+    <% } %>
+  </div>
+</body>
+</html>
